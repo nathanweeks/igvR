@@ -19,7 +19,14 @@
 
 
 #----------------------------------------------------------------------------------------------------
-igvBrowserFile <- system.file(package="igvR", "browserCode", "dist", "igv.html")
+igvBrowserFile <- NULL
+
+.onLoad <- function(...){
+   igvBrowserFile <<- system.file(package="igvR", "browserCode", "dist", "igv.html")
+   }
+
+#----------------------------------------------------------------------------------------------------
+
 #----------------------------------------------------------------------------------------------------
 setGeneric('ping',                 signature='obj', function (obj) standardGeneric ('ping'))
 setGeneric('setGenome',            signature='obj', function (obj, genomeName) standardGeneric ('setGenome'))
