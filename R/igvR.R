@@ -411,7 +411,7 @@ setMethod('displayTrack', 'igvR',
       if(!igv@quiet)
          message(sprintf("   writing vcf of size %d to %s", length(track@vcf.obj), temp.filename))
       writeVcf(track@vcf.obj, temp.filename)
-      dataURL <- sprintf("%s?%s", igv@uri, temp.filename)
+      dataURL <- sprintf("%s%s", igv@uri, temp.filename)
       indexURL <- ""
       }
    else{
@@ -443,7 +443,7 @@ setMethod('displayTrack', 'igvR',
    if(!igv@quiet)
       message(sprintf("   writing bam file of size %d to %s", length(track@alignementj), temp.filename))
    export(track@alignment, temp.filename, format="BAM")
-   dataURL <- sprintf("%s?%s", igv@uri, temp.filename)
+   dataURL <- sprintf("%s%s", igv@uri, temp.filename)
    message(sprintf("bam url: %s", dataURL))
    indexURL <- sprintf("%s.bai", dataURL)
    message(sprintf("bam track height: %d", track@height))
@@ -479,7 +479,7 @@ setMethod('displayTrack', 'igvR',
       png(filename, width=250, height=250)
       seqLogo(pwm, xaxis=FALSE, yaxis=FALSE)
       dev.off()
-      new.url <- sprintf("%s?%s", igvApp.uri, filename)
+      new.url <- sprintf("%s%s", igvApp.uri, filename)
       tbl$name[i]=sprintf(new.url)
       } # for i
 
@@ -520,7 +520,7 @@ setMethod('displayTrack', 'igvR',
      message(sprintf("       file.exists? %s", file.exists(temp.filename)))
      }
 
-   dataURL <- sprintf("%s?%s", igv@uri, temp.filename)
+   dataURL <- sprintf("%s%s", igv@uri, temp.filename)
    indexURL <- ""
 
 
@@ -570,7 +570,7 @@ setMethod('displayTrack', 'igvR',
       write.table(tbl.tmp.ordered, sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE, file=temp.filename)
       }
 
-   dataURL <- sprintf("%s?%s", igv@uri, temp.filename)
+   dataURL <- sprintf("%s%s", igv@uri, temp.filename)
    indexURL <- ""
 
    payload <- list(name=track@trackName,
